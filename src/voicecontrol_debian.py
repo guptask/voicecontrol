@@ -1,7 +1,11 @@
 #!/usr/bin/python
 
+# Ubuntu/Debian script
+
 import pyaudio,os
 import speech_recognition as sr
+
+# Use xdotool for mouse and keyboard control
 
 def chrome():
     os.system("google-chrome&")
