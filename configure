@@ -1,0 +1,60 @@
+#!/bin/bash
+
+###########################################################
+#
+# Voice control installer
+# Author: Sounak Gupta
+# Email : guptask@mail.uc.edu
+#
+###########################################################
+
+# Install the required packages by checking the Linux distribution
+OS=$(lsb_release -si)
+ARCH=$(uname -m | sed 's/x86_//;s/i[3-6]86/32/')
+VER=$(lsb_release -sr)
+
+case ${OS} in
+Debian)
+    echo "======"
+    echo "Debian"
+    echo "======"
+    ;;
+Ubuntu)
+    echo "======"
+    echo "Ubuntu"
+    echo "======"
+    ;;
+*)
+    echo "==============================================="
+    echo "Only Debian and Ubunut distributions supported."
+    echo "==============================================="
+    exit
+    ;;
+esac
+
+# Find the absolute path of the script
+SCRIPT=`realpath $0`
+SCRIPTPATH=`dirname $SCRIPT`
+
+# Copy the init script into /etc/init.d/
+sudo cp ${SCRIPTPATH}/src/voicecontrol.sh /etc/init.d/
+
+# Copy the python script into /usr/local/bin
+sudo cp ${SCRIPTPATH}/src/voicecontrol.py /usr/local/bin/
+
+# Add the symbolic link in /etc/rc.x directories so that 
+# the init script is run at the default times.
+sudo update-rc.d voicecontrol.sh defaults
+
+# Check whether the symbolic link worked
+ls -l /etc/rc?.d/*voicecontrol.sh
+
+# Start service
+sudo /etc/init.d/voicecontrol.sh start
+
+# Check service status
+sudo /etc/init.d/voicecontrol.sh status
+
+# Stop service
+#sudo /etc/init.d/voicecontrol.sh stop
+
