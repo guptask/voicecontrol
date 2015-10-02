@@ -1,18 +1,26 @@
 # Voice Control
 Laptop functionality control using Google's speech recognition toolkit
 
-### Debian/Ubunutu installation
+### Debian/Ubunutu (or any other Debian-based distribution)
 
-    sudo apt-get install python (requires 2.7.2+ - so default ubuntu/debian repo version should work)
-    sudo apt-get install python-pyaudio
-    sudo pip install SpeechRecognition
+Python (2.7 or higher), pyaudio and SpeechRecognition are needed.
+Additional packages needed are espeak, xdotool, nautilus, gnome-do, etc.
 
-    Other packages are subject to usage:
-        xdotool
-        nautilus
-        gnome-do
-        gnome-screensaver-command
+Commands needed to download and configure the package:
+    sudo apt-get install git
+    git clone https://github.com/guptask/voicecontrol
+    ./voicecontrol/linux/configure
 
-### Windows installation
+I'm working on a voicecontrol service that can be installed, started and stopped.
+The code is present inside the linux directory but I need to fix some bugs in it.
 
-    Install python, pyaudio and SpeechRecognition package. You have to figure out the rest.
+
+### Windows
+
+I'm not developing this currently. If you are interested, please take a look 
+at the windows directory inside the repository.
+
+Softwares/packages needed: python, pyaudio and SpeechRecognition package.
+
+You have to figure out the rest :)
+

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ### BEGIN INIT INFO
-# Provides:          voicecontrol_debian
+# Provides:          voicecontrol
 # Required-Start:    $remote_fs $syslog
 # Required-Stop:     $remote_fs $syslog
 # Default-Start:     2 3 4 5
@@ -13,8 +13,8 @@
 
 # Change the next 3 lines to suit where you install your script and what you want to call it
 DIR=/usr/local/bin
-DAEMON=$DIR/voicecontrol_debian.py
-DAEMON_NAME=voicecontrol_debian
+DAEMON=$DIR/voicecontrol
+DAEMON_NAME=voicecontrol
 
 # Add any command line options for your daemon here
 DAEMON_OPTS=""
