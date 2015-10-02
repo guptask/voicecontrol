@@ -28,7 +28,7 @@ time  in order to activate the control. Then you can say 'open chrome', 'open se
 #### Future:
 
 I want to use a natural language interpretor to create a generic framework for 
-command interpretation.
+command interpretation. I'm exploring Betty.
 
 
 ### Windows
