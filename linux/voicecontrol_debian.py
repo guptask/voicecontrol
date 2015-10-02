@@ -17,25 +17,43 @@ def gnomedo():
     os.system("gnome-do")
 
 def lockscreen():
-    os.system("gnome-screensaver-command --lock")
+    os.system("xdotool key super+l")
 
-def mainfunction(source):
+
+def validCommand(source):
     audio = r.listen(source)
     try:
         cmd = r.recognize_google(audio).lower()
-        print(cmd)
         if cmd == "open chrome" : chrome()
         elif cmd == "open downloads" : downloads()
         elif cmd == "open search" : gnomedo()
         elif cmd == "lock screen" : lockscreen()
-        else : return
+        elif cmd == "deactivate" :
+            os.system('espeak -v mb-us1 -s 170 "goodbye"')
+            return True
+        else : return False
 
-    except sr.UnknownValueError: return
-    except sr.RequestError: print("Offline")
+    except sr.UnknownValueError : return False
+    except sr.RequestError : print("+"),; return False
+
+    return True
+
+
+def activate(source):
+    audio = r.listen(source)
+    try:
+        cmd = r.recognize_google(audio).lower()
+        if cmd == "activate" : 
+            os.system('espeak -v mb-us1 -s 170 "listening"')
+            while validCommand(source) == False : pass
+
+    except sr.UnknownValueError : return
+    except sr.RequestError : print("!")
+
 
 if __name__ == "__main__":
     r = sr.Recognizer()
     with sr.Microphone() as source:
-        r.adjust_for_ambient_noise(source)
+        r.adjust_for_ambient_noise(source, duration = 1)
         while 1:
-            mainfunction(source)
+            activate(source)

@@ -15,14 +15,16 @@ VER=$(lsb_release -sr)
 
 case ${OS} in
 Debian)
-    echo "======"
-    echo "Debian"
-    echo "======"
+    sudo apt-get install python-pip
+    sudo apt-get install xdotool "gnome-do" nautilus
+    sudo pip install pyaudio SpeechRecognition
+    sudo apt-get install espeak mbrola-us1
     ;;
 Ubuntu)
-    echo "======"
-    echo "Ubuntu"
-    echo "======"
+    sudo apt-get install python-pip
+    sudo apt-get install xdotool "gnome-do" nautilus
+    sudo pip install pyaudio SpeechRecognition
+    sudo apt-get install espeak mbrola-us1
     ;;
 *)
     echo "==============================================="
@@ -33,27 +35,27 @@ Ubuntu)
 esac
 
 # Find the absolute path of the script
-SCRIPT=`realpath $0`
-SCRIPTPATH=`dirname $SCRIPT`
+#SCRIPT=`realpath $0`
+#SCRIPTPATH=`dirname $SCRIPT`
 
 # Copy the init script into /etc/init.d/
-sudo cp ${SCRIPTPATH}/src/voicecontrol.sh /etc/init.d/
+#sudo cp ${SCRIPTPATH}/src/voicecontrol.sh /etc/init.d/
 
 # Copy the python script into /usr/local/bin
-sudo cp ${SCRIPTPATH}/src/voicecontrol.py /usr/local/bin/
+#sudo cp ${SCRIPTPATH}/src/voicecontrol.py /usr/local/bin/
 
 # Add the symbolic link in /etc/rc.x directories so that 
 # the init script is run at the default times.
-sudo update-rc.d voicecontrol.sh defaults
+#sudo update-rc.d voicecontrol.sh defaults
 
 # Check whether the symbolic link worked
-ls -l /etc/rc?.d/*voicecontrol.sh
+#ls -l /etc/rc?.d/*voicecontrol.sh
 
 # Start service
-sudo /etc/init.d/voicecontrol.sh start
+#sudo /etc/init.d/voicecontrol.sh start
 
 # Check service status
-sudo /etc/init.d/voicecontrol.sh status
+#sudo /etc/init.d/voicecontrol.sh status
 
 # Stop service
 #sudo /etc/init.d/voicecontrol.sh stop
