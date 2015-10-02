@@ -7,6 +7,7 @@ Python (2.7 or higher), pyaudio and SpeechRecognition are needed.
 Additional packages needed are espeak, xdotool, nautilus, gnome-do, etc.
 
 Commands needed to download and configure the package:
+
     sudo apt-get install git
     git clone https://github.com/guptask/voicecontrol
     ./voicecontrol/linux/configure
