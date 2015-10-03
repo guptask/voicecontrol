@@ -35,13 +35,19 @@ able to get it to work properly so far.
 Type this command from any path on the terminal. You have to say 'activate' every 
 time  in order to activate the control. Then you can say any of the following:
 
-    open chrome - opens a new Google Chrome window
-    open downloads - opens the ~/Downloads directory using nautilus
-    open search - activates the gnome-do which is a gnome file/directory/package search assistant
-    lock screen - locks the screen
-    go online - activates Betty's web search mode - it allows you to ask questions in natural language
-                e.g. what is the weather like in cincinnati OR what is the date
-
+    open chrome       - opens a new Google Chrome window
+    open downloads    - opens the ~/Downloads directory using nautilus
+    open search       - activates the gnome-do which is a gnome 
+                        file/directory/package search assistant
+    lock screen       - locks the screen
+    go online         - activates Betty's web search mode which will 
+                        allow you to ask questions in natural language
+                        e.g.
+                             What is the weather like in cincinnati? 
+                                     OR
+                             What is the date?
+                        (this functionality is under construction)
+                        
 #### Future:
 
 I'm looking for a gesture control package that will allow me to replicate touchpad's 
