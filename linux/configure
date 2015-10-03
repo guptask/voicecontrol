@@ -15,16 +15,14 @@ VER=$(lsb_release -sr)
 
 case ${OS} in
 Debian)
-    sudo apt-get install python-pip
-    sudo apt-get install xdotool "gnome-do" nautilus
-    sudo pip install pyaudio SpeechRecognition
-    sudo apt-get install espeak mbrola-us1
+    echo "======"
+    echo "Debian"
+    echo "======"
     ;;
 Ubuntu)
-    sudo apt-get install python-pip
-    sudo apt-get install xdotool "gnome-do" nautilus
-    sudo pip install pyaudio SpeechRecognition
-    sudo apt-get install espeak mbrola-us1
+    echo "======"
+    echo "Ubuntu"
+    echo "======"
     ;;
 *)
     echo "==============================================="
@@ -38,11 +36,24 @@ esac
 SCRIPT=`realpath $0`
 SCRIPTPATH=`dirname $SCRIPT`
 
-# Copy the init script into /etc/init.d/
-#sudo cp ${SCRIPTPATH}/voicecontrol.sh /etc/init.d/
+# Install packages
+sudo apt-get install python-pip
+sudo apt-get install xdotool "gnome-do" nautilus
+sudo pip install pyaudio SpeechRecognition
+sudo apt-get install espeak mbrola-us1
+sudo apt-get install ruby
+
+# Install betty
+cd ${SCRIPTPATH}/betty/
+ruby install.rb
+cd ..
+source ~/.bashrc
 
 # Copy the python script into /usr/local/bin
 sudo cp ${SCRIPTPATH}/voicecontrol /usr/local/bin/
+
+# Copy the init script into /etc/init.d/
+#sudo cp ${SCRIPTPATH}/voicecontrol.sh /etc/init.d/
 
 # Add the symbolic link in /etc/rc.x directories so that 
 # the init script is run at the default times.
