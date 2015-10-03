@@ -7,35 +7,41 @@ import speech_recognition as sr
 
 # Use xdotool for mouse and keyboard control
 
-def chrome():
+def openchrome():
     os.system("google-chrome&")
 
-def downloads():
+def opendownloads():
     os.system("nautilus $HOME/Downloads/ &")
 
-def gnomedo():
+def opensearch():
     os.system("gnome-do")
 
 def lockscreen():
     os.system("xdotool key super+l")
 
+def deactivate():
+    os.system('espeak -v mb-us1 -s 170 "goodbye"')
+
+def goonline():
+    os.system('espeak -v mb-us1 -s 170 "switching to betty"')
 
 def validCommand(source):
     audio = r.listen(source)
     try:
         cmd = r.recognize_google(audio).lower()
-        if cmd == "open chrome" : chrome()
-        elif cmd == "open downloads" : downloads()
-        elif cmd == "open search" : gnomedo()
-        elif cmd == "lock screen" : lockscreen()
-        elif cmd == "deactivate" :
-            os.system('espeak -v mb-us1 -s 170 "goodbye"')
-            return True
+        print(cmd)
+        if   cmd == "open chrome"    : openchrome()
+        elif cmd == "open downloads" : opendownloads()
+        elif cmd == "open search"    : opensearch()
+        elif cmd == "lock screen"    : lockscreen()
+        elif cmd == "deactivate"     : deactivate()
+        elif cmd == "go online"      : goonline()
         else : return False
 
     except sr.UnknownValueError : return False
     except sr.RequestError : print("+"),; return False
 
+    deactivate()
     return True
 
 
