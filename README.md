@@ -1,13 +1,13 @@
 # Voice Control
 
 This package contains code for voice activated laptop functionality control. Some 
-free+/open source packages have been used to build it, notably Google's sppech 
+free+/open source packages have been used to build it, notably Google's speech 
 recognition toolkit and Betty (a natural language processor for Linux).
 
 The goal of this Voice Control package is to create a laptop assistant like those 
 present on modern smartphones.
 
-I am still in the process of building it. So expect changes in the package over 
+I'm still in the process of building it. So expect changes in the package over 
 the coming weeks.
 
 
@@ -24,8 +24,9 @@ Commands needed to download and configure the package:
     git clone https://github.com/guptask/voicecontrol
     ./voicecontrol/linux/configure
 
-I'm working on a voicecontrol service that can be installed, started and stopped.
-The code is present inside the linux directory but I need to fix some bugs in it.
+I  eventually plan to package it as a service that can be installed, started and 
+stopped. The code for this is present inside the linux directory but I haven't been 
+able to get it to work properly so far.
 
 #### Use:
 
