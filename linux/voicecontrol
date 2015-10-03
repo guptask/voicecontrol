@@ -10,20 +10,31 @@ import speech_recognition as sr
 def openchrome():
     os.system("google-chrome&")
 
+
 def opendownloads():
     os.system("nautilus $HOME/Downloads/ &")
+
 
 def opensearch():
     os.system("gnome-do")
 
+
 def lockscreen():
     os.system("xdotool key super+l")
 
-def deactivate():
-    os.system('espeak -v mb-us1 -s 170 "goodbye"')
 
-def goonline():
-    os.system('espeak -v mb-us1 -s 170 "switching to betty"')
+def goonline(source):
+    os.system('espeak -v mb-us1 -s 170 "Hello. Ask a question. I will search it."')
+    audio = r.listen(source)
+    try:
+        cmd = r.recognize_google(audio).lower()
+        os.system('betty turn web on')
+        print(cmd)
+        os.system('betty turn web off')
+
+    except sr.UnknownValueError : return
+    except sr.RequestError      : return
+
 
 def validCommand(source):
     audio = r.listen(source)
@@ -34,14 +45,13 @@ def validCommand(source):
         elif cmd == "open downloads" : opendownloads()
         elif cmd == "open search"    : opensearch()
         elif cmd == "lock screen"    : lockscreen()
-        elif cmd == "deactivate"     : deactivate()
-        elif cmd == "go online"      : goonline()
-        else : return False
+        elif cmd == "go online"      : goonline(source)
+        else                         : return False
 
     except sr.UnknownValueError : return False
-    except sr.RequestError : print("+"),; return False
+    except sr.RequestError      : return False
 
-    deactivate()
+    os.system('espeak -v mb-us1 -s 170 "goodbye"')
     return True
 
 
@@ -54,7 +64,7 @@ def activate(source):
             while validCommand(source) == False : pass
 
     except sr.UnknownValueError : return
-    except sr.RequestError : print("!")
+    except sr.RequestError      : return
 
 
 if __name__ == "__main__":
