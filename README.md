@@ -34,6 +34,7 @@ able to get it to work properly so far.
 
 Type this command from any path on the terminal. You have to say 'activate' every 
 time  in order to activate the control. Then you can say any of the following:
+
     open chrome - opens a new Google Chrome window
     open downloads - opens the ~/Downloads directory using nautilus
     open search - activates the gnome-do which is a gnome file/directory/package search assistant

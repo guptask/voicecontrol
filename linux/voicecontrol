@@ -29,7 +29,7 @@ def goonline(source):
     try:
         cmd = r.recognize_google(audio).lower()
         os.system('betty turn web on')
-        print(cmd)
+        os.system('espeak -v mb-us1 -s 170 "Under construction"')
         os.system('betty turn web off')
 
     except sr.UnknownValueError : return
