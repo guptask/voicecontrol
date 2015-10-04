@@ -41,7 +41,7 @@ sudo apt-get install python-pip
 sudo apt-get install xdotool "gnome-do" nautilus
 sudo pip install pyaudio SpeechRecognition
 sudo apt-get install espeak mbrola-us1
-sudo apt-get install ruby
+sudo apt-get install ruby zenity
 
 # Install betty
 cd ${SCRIPTPATH}/betty/

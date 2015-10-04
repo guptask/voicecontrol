@@ -15,8 +15,8 @@ the coming weeks.
 
 #### Configure:
 
-Python (2.7 or higher), pyaudio and SpeechRecognition are needed.
-Additional packages needed are espeak, xdotool, betty, nautilus, gnome-do, etc.
+Python (2.7 or higher), pyaudio and SpeechRecognition are needed. Some of the notable 
+packages used in here are espeak, xdotool, betty, nautilus, gnome-do and zenity.
 
 Commands needed to download and configure the package:
 

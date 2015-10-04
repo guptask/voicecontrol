@@ -21,10 +21,12 @@ def goonline(source):
     announce('Okay. Ask a question. I will search it')
     audio = r.listen(source)
     try:
-        announce(betty('turn web on'))
-        cmd = r.recognize_google(audio).lower()
-        print(cmd)
-        announce(betty('turn web off'))
+        betty('turn web on')
+        #cmd = r.recognize_google(audio).lower()
+        output = betty('what is the weather like in cincinnati')
+        zenity_cmd = 'zenity --info --text="' + output + '"'
+        execute(zenity_cmd)
+        betty('turn web off')
 
     except sr.UnknownValueError : return
     except sr.RequestError      : return
