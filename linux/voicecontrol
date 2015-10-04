@@ -10,60 +10,45 @@ import subprocess
 
 def announce(message):
     espeak_cmd = 'espeak -v mb-us1 -s 170 "' + message + '"'
-    os.system(espeak_cmd)
+    subprocess.check_output(espeak_cmd, shell=True)
 
-def betty(command, should_announce):
+def betty(command):
     betty_cmd = '~/.betty/main.rb ' + command
     output = subprocess.check_output(betty_cmd, shell=True)
-    if should_announce == True : announce(output)
-
-def openchrome():
-    os.system("google-chrome&")
-
-
-def opendownloads():
-    os.system("nautilus $HOME/Downloads/ &")
-
-
-def opensearch():
-    os.system("gnome-do")
-
-
-def lockscreen():
-    os.system("xdotool key super+l")
-
+    return output
 
 def goonline(source):
     announce('Okay. Ask a question. I will search it')
     audio = r.listen(source)
     try:
-        betty('turn web on', False)
+        announce(betty('turn web on'))
         cmd = r.recognize_google(audio).lower()
         print(cmd)
-        betty('turn web off', False)
+        announce(betty('turn web off'))
 
     except sr.UnknownValueError : return
     except sr.RequestError      : return
 
+def execute(command):
+    os.system(command)
 
 def validCommand(source):
     audio = r.listen(source)
     try:
         cmd = r.recognize_google(audio).lower()
         print(cmd)
-        if   cmd == "open chrome"    : openchrome()
-        elif cmd == "open downloads" : opendownloads()
-        elif cmd == "open search"    : opensearch()
-        elif cmd == "lock screen"    : lockscreen()
+        if   cmd == "open chrome"    : execute('google-chrome&')
+        elif cmd == "open downloads" : execute('nautilus $HOME/Downloads/ &')
+        elif cmd == "open search"    : execute('gnome-do&')
+        elif cmd == "lock screen"    : execute('xdotool key super+l')
         elif cmd == "go online"      : goonline(source)
         else                         : return False
 
     except sr.UnknownValueError : return False
     except sr.RequestError      : return False
 
-    announce('Goodbye')
+    announce('Say activate before using me again')
     return True
-
 
 def activate(source):
     audio = r.listen(source)
