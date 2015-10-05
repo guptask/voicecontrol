@@ -10,26 +10,21 @@ import subprocess
 
 def announce(message):
     espeak_cmd = 'espeak -v mb-us1 -s 170 "' + message + '"'
-    subprocess.check_output(espeak_cmd, shell=True)
+    subprocess.call(espeak_cmd, shell=True)
 
 def betty(command):
     betty_cmd = '~/.betty/main.rb ' + command
     output = subprocess.check_output(betty_cmd, shell=True)
     return output
 
-def goonline(source):
-    announce('Okay. Ask a question. I will search it')
-    audio = r.listen(source)
-    try:
-        betty('turn web on')
-        #cmd = r.recognize_google(audio).lower()
-        output = betty('what is the weather like in cincinnati')
-        zenity_cmd = 'zenity --info --text="' + output + '"'
-        execute(zenity_cmd)
-        betty('turn web off')
-
-    except sr.UnknownValueError : return
-    except sr.RequestError      : return
+def search(cmd):
+    announce('Searching')
+    print(cmd)
+    betty('turn web on')
+    output = betty(cmd)
+    zenity_cmd = 'zenity --info --text="' + output + '"'
+    execute(zenity_cmd)
+    betty('turn web off')
 
 def execute(command):
     os.system(command)
@@ -41,15 +36,16 @@ def validCommand(source):
         print(cmd)
         if   cmd == "open chrome"    : execute('google-chrome&')
         elif cmd == "open downloads" : execute('nautilus $HOME/Downloads/ &')
-        elif cmd == "open search"    : execute('gnome-do&')
+        elif cmd == "local search"   : execute('gnome-do&')
         elif cmd == "lock screen"    : execute('xdotool key super+l')
-        elif cmd == "go online"      : goonline(source)
-        else                         : return False
+        else 
+            if cmd.startswith("search ") : search(cmd[7:])
+            else                         : return False
 
     except sr.UnknownValueError : return False
     except sr.RequestError      : return False
 
-    announce('Say activate before using me again')
+    announce('Goodbye for now')
     return True
 
 def activate(source):

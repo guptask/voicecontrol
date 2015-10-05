@@ -37,16 +37,19 @@ time  in order to activate the control. Then you can say any of the following:
 
     open chrome       - opens a new Google Chrome window
     open downloads    - opens the ~/Downloads directory using nautilus
-    open search       - activates the gnome-do which is a gnome 
-                        file/directory/package search assistant
+    local search      - activates gnome-do, which is a desktop search 
+                        assistant for gnome.
+                        Note: I plan to make this search process voice 
+                        controlled as well.
     lock screen       - locks the screen
-    go online         - activates Betty's web search mode which will 
+
+    search <search query in natural language> 
+                      - activates Betty's web search mode which will 
                         allow you to ask questions in natural language
                         e.g.
-                             What is the weather like in cincinnati? 
+                             search what is the weather in cincinnati 
                                      OR
-                             What is the date?
-                        (this functionality is under construction)
+                             search what is the date
                         
 #### Future:
 
