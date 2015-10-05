@@ -40,7 +40,7 @@ def validCommand(source):
         elif cmd == "lock screen"    : execute('xdotool key super+l')
         else :
             if cmd.startswith("search ") : search(cmd[7:])
-            else : return False
+            else                         : return False
 
     except sr.UnknownValueError : return False
     except sr.RequestError      : return False
