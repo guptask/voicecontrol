@@ -15,10 +15,12 @@ the coming weeks.
 
 #### Configure:
 
-Python (2.7 or higher), pyaudio and SpeechRecognition are needed. Some of the notable 
-packages used in here are espeak, xdotool, betty, nautilus, gnome-do and zenity.
+Python (2.7 or higher), pyaudio and SpeechRecognition are needed. espeak, xdotool, 
+betty, nautilus, gnome-do and zenity are some notable packages used to build this 
+tool. The configuration script (instructions below) will take care of these package 
+installations.
 
-Commands needed to download and configure the package:
+Commands needed to download and configure the package (and associated packages):
 
     sudo apt-get install git
     git clone https://github.com/guptask/voicecontrol
