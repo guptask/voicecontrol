@@ -38,9 +38,9 @@ def validCommand(source):
         elif cmd == "open downloads" : execute('nautilus $HOME/Downloads/ &')
         elif cmd == "local search"   : execute('gnome-do&')
         elif cmd == "lock screen"    : execute('xdotool key super+l')
-        else 
+        else :
             if cmd.startswith("search ") : search(cmd[7:])
-            else                         : return False
+            else : return False
 
     except sr.UnknownValueError : return False
     except sr.RequestError      : return False
