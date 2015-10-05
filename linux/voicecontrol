@@ -6,8 +6,6 @@ import pyaudio,os
 import speech_recognition as sr
 import subprocess
 
-# Use xdotool for mouse and keyboard control
-
 def announce(message):
     espeak_cmd = 'espeak -v mb-us1 -s 170 "' + message + '"'
     subprocess.call(espeak_cmd, shell=True)
@@ -19,7 +17,6 @@ def betty(command):
 
 def search(cmd):
     announce('Searching')
-    print(cmd)
     betty('turn web on')
     output = betty(cmd)
     zenity_cmd = 'zenity --info --text="' + output + '"'
@@ -53,7 +50,7 @@ def activate(source):
     try:
         cmd = r.recognize_google(audio).lower()
         if cmd == "activate" : 
-            announce('Hello. What do you want ?')
+            announce('Hello. Listening')
             while validCommand(source) == False : pass
 
     except sr.UnknownValueError : return
