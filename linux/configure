@@ -44,10 +44,16 @@ sudo apt-get install espeak mbrola-us1
 sudo apt-get install ruby zenity
 
 # Install betty
-cd ${SCRIPTPATH}/betty/
-ruby install.rb
-cd ..
-source ~/.bashrc
+bashrc=$HOME/.bashrc
+if grep -c 'alias betty' $bashrc
+then
+    echo 'Betty already installed'
+else
+    cd ${SCRIPTPATH}/betty/
+    ruby install.rb
+    cd ..
+    source $bashrc
+fi
 
 # Copy the python script into /usr/local/bin
 sudo cp ${SCRIPTPATH}/voicecontrol /usr/local/bin/
