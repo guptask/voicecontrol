@@ -56,7 +56,7 @@ else
 fi
 
 # Copy the python script into /usr/local/bin
-sudo cp ${SCRIPTPATH}/voicecontrol /usr/local/bin/
+sudo cp ${SCRIPTPATH}/voicecontrol.py /usr/local/bin/voicecontrol
 
 # Copy the init script into /etc/init.d/
 #sudo cp ${SCRIPTPATH}/voicecontrol.sh /etc/init.d/
